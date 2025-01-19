@@ -56,3 +56,60 @@ POST /users/register
     "password": "secure123"
 }
 ```
+
+## Login User
+Endpoint for user authentication.
+
+### Endpoint
+```
+POST /users/login
+```
+
+### Request Body
+```json
+{
+    "email": "string",    // required, valid email format
+    "password": "string"  // required, min 6 characters
+}
+```
+
+### Response Codes
+- `200`: Login successful
+- `400`: Validation error or missing required fields
+- `401`: Invalid credentials
+- `500`: Server error
+
+### Success Response
+```json
+{
+    "status": "success",
+    "message": "Login successful",
+    "token": "jwt_token_string",
+    "user": {
+        "fullname": {
+            "firstname": "string",
+            "lastname": "string"
+        },
+        "email": "string",
+        "_id": "string"
+    }
+}
+```
+
+### Error Response
+```json
+{
+    "status": "error",
+    "message": "Invalid credentials",
+    "errors": [] // Array of validation errors if any
+}
+```
+
+### Example
+```json
+// Request
+{
+    "email": "john.doe@example.com",
+    "password": "secure123"
+}
+```
