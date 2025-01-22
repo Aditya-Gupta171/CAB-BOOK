@@ -113,3 +113,71 @@ POST /users/login
     "password": "secure123"
 }
 ```
+
+## Get User Profile
+Endpoint for retrieving authenticated user's profile.
+
+### Endpoint
+```
+GET /users/profile
+```
+
+### Headers
+```
+Authorization: Bearer <jwt_token_string>
+```
+
+### Response Codes
+- `200`: Profile retrieved successfully
+- `401`: Unauthorized or invalid token
+- `500`: Server error
+
+### Success Response
+```json
+{
+    "fullname": {
+        "firstname": "string",
+        "lastname": "string"
+    },
+    "email": "string",
+    "_id": "string"
+}
+```
+
+### Error Response
+```json
+{
+    "message": "Unauthorized"
+}
+```
+
+## Logout User
+Logout the current user and blacklist the token provided in cookie or headers 
+### Endpoint
+```
+GET /users/logout 
+```
+
+### Headers
+```
+Authorization: Bearer <jwt_token_string>
+```
+
+### Response Codes
+- `200`: Successfully logged out
+- `401`: Unauthorized or invalid token
+- `500`: Server error
+
+### Success Response
+```json
+{
+    "message": "Logged out"
+}
+```
+
+### Error Response
+```json
+{
+    "message": "Unauthorized"
+}
+```
