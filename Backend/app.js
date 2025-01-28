@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const connect = require('./db/db');
 const userRoutes = require('./routes/user.routes');
 const captainRoutes = require('./routes/captain.routes');
+const rideRoutes = require('./routes/ride.routes');
 
 connect();
 
@@ -21,5 +22,6 @@ app.get('/', (req, res) => {
 
 app.use('/users', userRoutes);
 app.use('/captains', captainRoutes);
+app.use('/rides', rideRoutes);
 
 module.exports = app;
